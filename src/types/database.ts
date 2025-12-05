@@ -30,7 +30,7 @@ export interface GardenChore {
   chore_type: 'watering' | 'fertilizing' | 'pruning' | 'repotting' | 'harvesting' | 'other'
   scheduled_date: string
   completed: boolean
-  completed_at?: string
+  completed_at?: string | null
   created_at: string
   updated_at: string
 }
@@ -62,4 +62,3 @@ export interface BotanicalSpecies {
   temperature_range?: string
   image_url?: string
 }
-
