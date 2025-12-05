@@ -3,10 +3,11 @@ import { getPlantSpeciesById } from '@/lib/botanical-api'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const species = await getPlantSpeciesById(params.id)
+    const { id } = await context.params
+    const species = await getPlantSpeciesById(id)
     return NextResponse.json(species)
   } catch (error) {
     console.error('Botanical API get species error:', error)
@@ -16,4 +17,3 @@ export async function GET(
     )
   }
 }
-
