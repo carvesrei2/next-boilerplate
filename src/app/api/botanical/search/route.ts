@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     const common_name = searchParams.get('common_name') || undefined
     const family = searchParams.get('family') || undefined
     const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : undefined
-    const offset = searchParams.get('offset') ? parseInt(searchParams.get('offset')!) : undefined
+    const page = searchParams.get('page') ? parseInt(searchParams.get('page')!) : undefined
 
     const results = await searchPlantSpecies({
       query,
@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
       common_name,
       family,
       limit,
-      offset,
+      page,
     })
 
     return NextResponse.json({ results })
@@ -29,4 +29,3 @@ export async function GET(request: NextRequest) {
     )
   }
 }
-
